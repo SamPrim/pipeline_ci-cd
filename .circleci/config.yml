@@ -7,13 +7,11 @@ jobs:
   save_hello_world_output:
     docker:
       - image: circleci/node:13.8.0
-    environment:
-      NAME: "Ndo Samy Stephan"
     steps:
       - checkout
       - run:
           name: "Print hello world on the file"
-          command: "echo Hello! $NAME - ${CIRCLE_USERNAME} > output.txt"
+          command: echo "Hello! $NAME - ${CIRCLE_USERNAME}" > output.txt
       - persist_to_workspace:
           root: /tmp
           paths:
