@@ -4,7 +4,8 @@ commands:
   print_pipeline_id:
     parameters:
       id:
-        type: String
+        type: string
+        default: "None"
     steps: 
       - run: echo <<parameters.id>>
 
@@ -12,7 +13,7 @@ orbs:
   welcome: circleci/welcome-orb@0.4.1
 
 jobs:
-  print_id::
+  print_id:
     print_pipeline_id:
       id: $CIRCLE_WORKFLOW_ID
     
