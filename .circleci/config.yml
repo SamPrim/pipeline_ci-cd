@@ -13,7 +13,7 @@ jobs:
       - checkout
       - run:
           name: "Print hello"
-          command: "echo Hello! $NAME"
+          command: "echo Hello! $NAME - ${CIRCLE_USERNAME}"
 
   print_world:
     docker:
