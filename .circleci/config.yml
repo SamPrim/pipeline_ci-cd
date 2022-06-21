@@ -1,37 +1,22 @@
 version: 2.1
 
+commands:
+  print_pipeline_id:
+    - paramaters:
+      to:
+        id: String
+    steps: 
+      run: echo <<paramaters.id>>
+
 orbs:
   welcome: circleci/welcome-orb@0.4.1
 
 jobs:
-  save_hello_world_output:
-    docker:
-      - image: circleci/node:13.8.0
-    steps:
-      - checkout
-      - run:
-          name: "Print hello world on the file"
-          command: echo "Hello worl" > /tmp/output.txt
-      - persist_to_workspace:
-          root: /tmp
-          paths:
-            - output.txt
-
-  print_output_file:
-    docker:
-      - image: circleci/node:13.8.0
-    steps:
-      - checkout
-      - attach_workspace:
-          at: /tmp
-      - run:
-          name: "Print File"
-          command: "cat /tmp/output.txt"
+  print_id:
     
 workflows:
-  print_hello_workflow:
+  reuse_code:
     jobs:
-      - save_hello_world_output
-      - print_output_file:
-          requires:
-            - save_hello_world_output
+      - print_id:
+        print_pipeline_id:
+          to: $CIRCLE_WORKFLOW_ID
