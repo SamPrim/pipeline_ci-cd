@@ -16,8 +16,8 @@ jobs:
     steps:
       - checkout
       - run:
-        name: "Print World"
-        command: "World!"
+          name: "Print World"
+          command: "World!"
 
 workflows:
   say-hello-workflow:
