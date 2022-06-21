@@ -19,8 +19,11 @@ jobs:
     steps:
       - run: return 1
   print_fail:
-    run: echo "fail code"
-    when: on_fail
+    steps:
+      - run: 
+        name: Fail text
+        commands: echo "fail code"
+        when: on_fail
 
 workflows:
   reuse_code:
