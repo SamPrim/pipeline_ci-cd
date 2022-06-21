@@ -13,15 +13,11 @@ orbs:
   welcome: circleci/welcome-orb@0.4.1
 
 jobs:
-  print_id:
-    docker:
-      - image: circleci/node:13.8.0
-    steps:
-      - run: return 1
   print_fail:
     docker:
       - image: circleci/node:13.8.0
     steps:
+      - run: exit 1
       - run: 
         name: Fail text
         commands: echo "fail code"
@@ -30,5 +26,4 @@ jobs:
 workflows:
   reuse_code:
     jobs:
-      - print_id
       - print_fail
