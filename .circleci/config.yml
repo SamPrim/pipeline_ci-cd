@@ -12,11 +12,11 @@ orbs:
   welcome: circleci/welcome-orb@0.4.1
 
 jobs:
-  print_id:
+  print_id::
+    print_pipeline_id:
+      to: $CIRCLE_WORKFLOW_ID
     
 workflows:
   reuse_code:
     jobs:
-      - print_id:
-        print_pipeline_id:
-          to: $CIRCLE_WORKFLOW_ID
+      - print_id
