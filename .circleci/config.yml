@@ -7,11 +7,13 @@ jobs:
   print_hello:
     docker:
       - image: circleci/node:13.8.0
+    environment:
+      NAME: "Ndo Samy Stephan"
     steps:
       - checkout
       - run:
           name: "Print hello"
-          command: "echo Hello!"
+          command: "echo Hello! $NAME"
 
   print_world:
     docker:
@@ -21,7 +23,7 @@ jobs:
       - run:
           name: "Print World"
           command: "echo World!"
-
+    
 workflows:
   say-hello-workflow:
     jobs:
