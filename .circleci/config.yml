@@ -8,7 +8,7 @@ jobs:
       - checkout
       - run:
           name: "Print hello"
-          command: "Hello!"
+          command: "echo Hello!"
 
   print_world:
     docker:
@@ -17,7 +17,7 @@ jobs:
       - checkout
       - run:
           name: "Print World"
-          command: "World!"
+          command: "echo World!"
 
 workflows:
   say-hello-workflow:
