@@ -11,7 +11,7 @@ jobs:
       - checkout
       - run:
           name: "Print hello world on the file"
-          command: echo "Hello worl" > output.txt
+          command: echo "Hello worl" > /temp/output.txt
       - persist_to_workspace:
           root: /tmp
           paths:
