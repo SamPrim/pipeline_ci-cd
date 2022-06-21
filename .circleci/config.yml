@@ -14,6 +14,8 @@ orbs:
 
 jobs:
   print_id:
+    docker:
+      - image: circleci/node:13.8.0
     print_pipeline_id:
       id: $CIRCLE_WORKFLOW_ID
     
