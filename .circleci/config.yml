@@ -2,7 +2,7 @@ version: 2.1
 
 commands:
   print_pipeline_id:
-    - parameters:
+    parameters:
       to:
         id: String
     steps: 
