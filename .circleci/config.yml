@@ -2,11 +2,11 @@ version: 2.1
 
 commands:
   print_pipeline_id:
-    - paramaters:
+    - parameters:
       to:
         id: String
     steps: 
-      run: echo <<paramaters.id>>
+      run: echo <<parameters.id>>
 
 orbs:
   welcome: circleci/welcome-orb@0.4.1
