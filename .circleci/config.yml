@@ -17,7 +17,7 @@ commands:
             # ${CIRCLE_WORKFLOW_ID:0:5} takes the first 5 chars of the variable CIRCLE_CI_WORKFLOW_ID 
             when: on_fail
             command: |
-              aws cloudformation delete-stack --stack-name myStack-${CIRCLE_WORKFLOW_ID:0:5}
+              aws cloudformation delete-stack --stack-name myStack-e1d85
 
 jobs:
   # create_infrastructure: 
@@ -33,22 +33,21 @@ jobs:
   #             --stack-name myStack-${CIRCLE_WORKFLOW_ID:0:5} \
   #             --region us-east-1
 
-  configure_infrastructure:
-    docker:
-      - image: python:3.7-alpine3.11
-    steps:
-      - checkout
-      - add_ssh_keys:
-          fingerprints: ["ae:2c:c6:64:6f:6e:83:f1:2d:49:81:13:b7:57:5e:aa"]
-      - run:
-          name: Install Ansible
-          command: |
-            apk add --update ansible
-      - run: echo myStack-${CIRCLE_WORKFLOW_ID:0:5}
-      - run:
-          name: Run playbook and run server
-          command: |
-            ansible-playbook -i inventory.txt main.yml
+  # configure_infrastructure:
+  #   docker:
+  #     - image: python:3.7-alpine3.11
+  #   steps:
+  #     - checkout
+  #     - add_ssh_keys:
+  #         fingerprints: ["ae:2c:c6:64:6f:6e:83:f1:2d:49:81:13:b7:57:5e:aa"]
+  #     - run:
+  #         name: Install Ansible
+  #         command: |
+  #           apk add --update ansible
+  #     - run:
+  #         name: Run playbook and run server
+  #         command: |
+  #           ansible-playbook -i inventory.txt main.yml
 
   smoke_test:
     docker:
