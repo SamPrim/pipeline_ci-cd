@@ -34,7 +34,7 @@ jobs:
       - run:
           name: Run playbook and run server
           command: |
-            ansible-playbook -i inventory.txt template.yml
+            ansible-playbook -i inventory.txt main.yml
 
 workflows:
   deploy_job:
